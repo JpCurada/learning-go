@@ -3,63 +3,51 @@ package main
 import "fmt"
 
 func main() {
-	// SECTION 1: String Variables
-	var strFirstName string = "John Paul"  // Explicit type
-	var strLastName = "Curada"            // Type inference
-	var strName string                    // Zero value initialization
-	
-	fmt.Println("Initial names:", strFirstName, strLastName, strName)
-	
-	strName = strLastName
-	strLastName = "Mercado"
-	fmt.Println("After modification:", strFirstName, strLastName, strName)
+    // SECTION 1: ARRAYS (Fixed Length)
+    fmt.Println("=== Arrays ===")
+    
+    // Array declaration with explicit size
+    var arrNums = [3]int{20, 25, 30}
+    fmt.Printf("Integer array: %v, Length: %d\n", arrNums, len(arrNums))
 
-	// SECTION 2: Integer Variables
-	var intAgeOne int = 20    // Explicit type
-	var intAgeTwo = 30        // Type inference
-	intAgeThree := 40         // Short declaration
-	fmt.Println("\nIntegers:", intAgeOne, intAgeTwo, intAgeThree)
+    // Array with implicit size
+    names := [...]string{"yoshi", "mario", "peach", "bowser"}
+    fmt.Printf("Original names: %v, Length: %d\n", names, len(names))
 
-	// Integer types with specific sizes
-	var numOne int8 = 25              // 8-bit signed integer (-128 to 127)
-	var numTwo int8 = -123
-	var absOne uint8 = 12             // 8-bit unsigned integer (0 to 255)
-	var absTwo uint32 = 1213112431    // 32-bit unsigned integer
-	fmt.Println("Different integer types:", numOne, numTwo, absOne, absTwo)
+    // Modifying array elements
+    names[1] = "JP"
+    fmt.Printf("Modified names: %v\n", names)
 
-	// SECTION 3: Floating Point Variables
-	var scoreOne float64 = 10.21               // Explicit float64
-	var scoreTwo = -12.03213123213213213       // Type inference
-	scoreThree := 12.213123213                 // Short declaration
-	fmt.Println("\nFloating points:", scoreOne, scoreTwo, scoreThree)
+    // Zero-valued array
+    var emptyArr [3]int
+    fmt.Printf("Zero-valued array: %v\n\n", emptyArr)
 
-	// SECTION 4: Print Function Variations
-	fmt.Print("Hello, ")           // Print without newline
-	fmt.Print("World! \n")        // Manual newline
-	fmt.Print("New line example \n")
+    // SECTION 2: SLICES (Dynamic Length)
+    fmt.Println("=== Slices ===")
+    
+    // Basic slice declaration
+    var scores = []int{100, 50, 60}
+    fmt.Printf("Original slice: %v, Length: %d\n", scores, len(scores))
 
-	fmt.Println("\nPrintln examples:")  // Println automatically adds newline
-	fmt.Println("Hello ninjas!")
-	fmt.Println("goodbye ninjas!")
+    // Modifying and appending to slices
+    scores[2] = 25
+    scores = append(scores, 85)
+    fmt.Printf("Modified slice: %v, Length: %d\n", scores, len(scores))
 
-	// SECTION 5: Formatted Printing (Printf)
-	name := "JP"
-	age := 20
+    // SECTION 3: SLICE OPERATIONS
+    fmt.Println("\n=== Slice Operations ===")
+    
+    fruits := [6]string{"apple", "banana", "orange", "grape", "mango", "kiwi"}
+    fmt.Printf("Original array: %v\n", fruits)
 
-	// Basic variable substitution
-	fmt.Println("\nFormatted print examples:")
-	fmt.Printf("Hello %v! Are you already %v years old?\n", name, age)
-	
-	// String formatting with quotes
-	fmt.Printf("Hello %q! Are you already %q years old?\n", name, age)
-	
-	// Type printing
-	fmt.Printf("Variable type: %T\n", age)
-	
-	// Float formatting
-	fmt.Printf("Float with 1 decimal: %0.1f\n", 225.27)
-
-	// SECTION 6: Sprintf (String Formatting)
-	savedString := fmt.Sprintf("Hello %v! Are you already %v years old?\n", name, age)
-	fmt.Println("\nStored formatted string:", savedString)
+    // Different ways of slicing
+    rangeOne := fruits[1:3]    // Elements from index 1 to 2
+    rangeTwo := fruits[2:]     // Elements from index 2 to end
+    rangeThree := fruits[:3]   // Elements from start to index 2
+    rangeFour := fruits[:]     // All elements
+    
+    fmt.Printf("Slice [1:3]: %v\n", rangeOne)
+    fmt.Printf("Slice [2:]: %v\n", rangeTwo)
+    fmt.Printf("Slice [:3]: %v\n", rangeThree)
+    fmt.Printf("Slice [:]: %v\n", rangeFour)
 }
